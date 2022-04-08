@@ -10,10 +10,8 @@ passport.use(
     clientSecret: process.env.GOOGLE_SECRET,
     callbackURL: process.env.GOOGLE_CALLBACK
   }, function(accessToken, refreshToken, profile, done) {
-    // a user has logged in via OAuth!
-    // refer to the lesson plan from earlier today in order to set this up
-    console.log(profile)
-    console.log('this profile ^ from google')
+    // console.log(profile)
+    // console.log('this profile ^ from google')
 
     User.findOne({googleId: profile.id}, function(err, user){
       if(user) return done(null, user);
@@ -41,10 +39,6 @@ passport.deserializeUser(function(id, done) {
     if(err) return done(err);
     done(null, user);
   })
-  // Find your User, using your model, and then call done(err, whateverYourUserIsCalled)
-  // When you call this done function passport assigns the user document to req.user, which will 
-  // be availible in every Single controller function, so you always know the logged in user
-
 });
 
 

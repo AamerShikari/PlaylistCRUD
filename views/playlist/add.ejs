@@ -1,0 +1,22 @@
+<%- include('../partials/header') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Playlist</title>
+</head>
+<body>
+    <h1> Add New Playlist Page </h1>
+    <form action="/playlist/create" method="POST">
+        <label>Enter Title:
+            <input type="text" name="title">
+        </label> <br>
+        <label> Enter Songs (comma-seperated):
+            <input type="text" name="songs">
+        </label> <br>
+        <button type="submit">Create!</button>
+    </form>
+</body>
+</html>

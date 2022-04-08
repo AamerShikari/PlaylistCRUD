@@ -7,5 +7,7 @@ router.get('/allSongs', songController.index)
 router.get('/addSong', songController.add)
 //POST /song/create
 router.post('/create', songController.new)
+//GET /song/:id
+router.get('/:id', songController.show)
 
 module.exports = router

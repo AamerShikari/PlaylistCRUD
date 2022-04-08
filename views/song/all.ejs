@@ -11,7 +11,8 @@
     <h1>All Songs</h1>
     <ul> 
         <% songs.forEach(song => { %>
-            <li> <%= song.name %>  <br> &nbsp; &nbsp; by <%= song.artist %> </li>
+            <li> <%= song.name %>  <br> &nbsp; &nbsp; by <%= song.artist %> 
+            <button><a href="/song/<%= song._id %>">Details</a></button></li>
         <% }) %> 
     </ul>
 </body>

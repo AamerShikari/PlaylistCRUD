@@ -9,5 +9,7 @@ router.get('/addPlaylist', playlistController.add)
 router.post('/create', playlistController.new)
 //GET /playlist/:id
 router.get('/:id', playlistController.show)
+//DELETE /playlist/:id
+router.delete('/:id', playlistController.delete)
 
 module.exports = router;

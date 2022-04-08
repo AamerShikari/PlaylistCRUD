@@ -9,5 +9,7 @@ router.get('/addSong', songController.add)
 router.post('/create', songController.new)
 //GET /song/:id
 router.get('/:id', songController.show)
+//DELETE /song/:id
+router.delete('/:id', songController.delete)
 
 module.exports = router

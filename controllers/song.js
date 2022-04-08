@@ -4,7 +4,8 @@ module.exports = {
     index,
     add,
     new: newSong,
-    show
+    show,
+    delete: deleteSong
 }
 
 function index (req, res) {
@@ -27,5 +28,11 @@ function newSong (req, res) {
 function show (req, res) {
     Song.findOne({_id: req.params.id}, function(err, song){
         res.render('song/show', {song: song})
+    })
+}
+
+function deleteSong (req, res) {
+    Song.findOneAndDelete({_id: req.params.id}, function (err){
+        res.redirect('/song/allSongs')
     })
 }

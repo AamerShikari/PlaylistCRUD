@@ -14,5 +14,9 @@
             <li> <%= song %> </li>
         <% }) %> 
     </ul>
+
+    <form action="/playlist/<%= playlist._id %>?_method=DELETE" method="POST">
+        <button type="submit">Delete Playlist!</button>
+    </form>
 </body>
 </html>

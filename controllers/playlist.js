@@ -4,7 +4,8 @@ module.exports ={
     index,
     add,
     new: newPlaylist,
-    show
+    show,
+    delete: deletePlaylist
 }
 
 function index (req, res) {
@@ -33,5 +34,11 @@ function newPlaylist (req, res){
 function show (req, res) {
     Playlist.findOne({_id: req.params.id}, function(err, playlist){
         res.render('playlist/show', {playlist: playlist})
+    })
+}
+
+function deletePlaylist (req, res) {
+    Playlist.findOneAndDelete({_id: req.params.id}, function(err) {
+        res.redirect('/playlist/allPlaylists')
     })
 }

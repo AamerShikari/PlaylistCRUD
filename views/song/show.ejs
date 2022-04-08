@@ -10,5 +10,9 @@
 <body>
     <h1><%= song.name %> </h1>
     <h2> &nbsp; &nbsp; by <%= song.artist %> </h2>
+
+    <form action="/song/<%= song._id %>?_method=DELETE" method="POST">
+        <button type="submit">Delete Song</button>
+    </form>
 </body>
 </html>

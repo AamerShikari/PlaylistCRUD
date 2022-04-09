@@ -11,5 +11,9 @@ router.post('/create', playlistController.new)
 router.get('/:id', playlistController.show)
 //DELETE /playlist/:id
 router.delete('/:id', playlistController.delete)
+//PUT /playlist/:id/addSong
+router.post('/:id/addSong', playlistController.addSong)
+//DELETE /playlist/:id/:songId
+router.delete('/:id/:songId', playlistController.removeSong)
 
 module.exports = router;

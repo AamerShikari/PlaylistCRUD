@@ -1,11 +1,14 @@
 const Playlist = require('../models/playlist')
+const Song = require('../models/song')
 
 module.exports ={
     index,
     add,
     new: newPlaylist,
     show,
-    delete: deletePlaylist
+    delete: deletePlaylist,
+    addSong,
+    removeSong
 }
 
 function index (req, res) {
@@ -19,11 +22,7 @@ function add (req, res) {
 }
 
 function newPlaylist (req, res){
-    req.body.songs = req.body.songs.split(',');
     req.body.title = req.body.title.trim()
-    for (let i = 0; i < req.body.songs.length; i++){
-        req.body.songs[i] = req.body.songs[i].trim()
-    }
 
     const playlist = new Playlist(req.body)
     playlist.save(function(err){
@@ -32,13 +31,39 @@ function newPlaylist (req, res){
 }
 
 function show (req, res) {
-    Playlist.findOne({_id: req.params.id}, function(err, playlist){
-        res.render('playlist/show', {playlist: playlist})
+    Playlist.findOne({_id: req.params.id}).populate('songs').exec(function(err, playlist){
+        Song.find({_id: {$nin: playlist.songs}}, function(err, songs){
+            res.render('playlist/show', {playlist: playlist, songs: songs})
+        })
     })
 }
 
 function deletePlaylist (req, res) {
     Playlist.findOneAndDelete({_id: req.params.id}, function(err) {
         res.redirect('/playlist/allPlaylists')
+    })
+}
+
+function addSong (req, res) {
+    Playlist.findOne({_id: req.params.id}, function(err, playlist) {
+        playlist.songs.push(req.body.songId)
+        playlist.save(function(err){
+            res.redirect(`/playlist/${playlist._id}`)
+        })
+    })
+}
+
+function removeSong (req, res) {
+    console.log(req.params.songId)
+    Playlist.findById(req.params.id, function(err, playlist){
+        let i = playlist.songs.findIndex(function(d){
+            return d._id == req.params.songId
+        })
+        playlist.songs.splice(i, 1)
+        console.log(playlist.songs)
+        playlist.save(function(err, f){
+            if (err){ console.log(err)}
+            res.redirect(`/playlist/${req.params.id}`)
+        })
     })
 }

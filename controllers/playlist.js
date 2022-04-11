@@ -13,12 +13,12 @@ module.exports ={
 
 function index (req, res) {
     Playlist.find({}, function(err, playlists){
-        res.render('playlist/all', {playlists: playlists})
+        res.render('playlist/all', {playlists: playlists, user: req.user})
     });
 }
 
 function add (req, res) {
-    res.render('playlist/add')
+    res.render('playlist/add', {user: req.user})
 }
 
 function newPlaylist (req, res){
@@ -33,7 +33,7 @@ function newPlaylist (req, res){
 function show (req, res) {
     Playlist.findOne({_id: req.params.id}).populate('songs').exec(function(err, playlist){
         Song.find({_id: {$nin: playlist.songs}}, function(err, songs){
-            res.render('playlist/show', {playlist: playlist, songs: songs})
+            res.render('playlist/show', {playlist: playlist, songs: songs, user: req.user})
         })
     })
 }

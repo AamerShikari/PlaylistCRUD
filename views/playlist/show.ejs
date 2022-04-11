@@ -11,7 +11,7 @@
     <h1><%= playlist.title %> </h1>
     <ul>
         <% playlist.songs.forEach(song =>{ %>
-            <li> <%= song._id %> <%= song.name %> <br> &nbsp; &nbsp; By <%= song.artist %> 
+            <li><%= song.name %> <br> &nbsp; &nbsp; By <%= song.artist %> 
             <form action="/playlist/<%= playlist._id %>/<%= song._id %>?_method=DELETE" method="POST"> 
                 <button type="submit">Remove</button>
             </form>
@@ -31,6 +31,19 @@
             <% }) %> 
         </select>
         <button type="submit">Add Song</button>
+    </form>
+
+    <h2>Reviews</h2>
+    <ul>
+        <% playlist.reviews.forEach(review => { %> 
+            <li><%= review.user %>: <%= review.content %> </li>
+        <% }) %> 
+    </ul>
+
+    <h2>Add Review</h2>
+    <form action="/playlist/<%= playlist._id %>/<%= user.name %>/playlistReview" method="POST">
+        <input type="text" name="content"> <br>
+        <button type="submit">Add Review</button>
     </form>
 </body>
 </html>

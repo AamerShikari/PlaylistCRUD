@@ -31,7 +31,7 @@ function newPlaylist (req, res){
 }
 
 function show (req, res) {
-    Playlist.findOne({_id: req.params.id}).populate('songs').exec(function(err, playlist){
+    Playlist.findOne({_id: req.params.id}).populate('songs').populate('reviews').exec(function(err, playlist){
         Song.find({_id: {$nin: playlist.songs}}, function(err, songs){
             res.render('playlist/show', {playlist: playlist, songs: songs, user: req.user})
         })

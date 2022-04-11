@@ -14,5 +14,18 @@
     <form action="/song/<%= song._id %>?_method=DELETE" method="POST">
         <button type="submit">Delete Song</button>
     </form>
+
+    <h2>Reviews</h2>
+    <ul>
+        <% song.reviews.forEach(review => { %> 
+            <li><%= review.user %>: <%= review.content %> </li>
+        <% }) %> 
+    </ul>
+
+    <h2>Add Review</h2>
+    <form action="/song/<%= song._id %>/<%= user.name %>/songReview" method="POST">
+        <input type="text" name="content"> <br>
+        <button type="submit">Add Review</button>
+    </form>
 </body>
 </html>

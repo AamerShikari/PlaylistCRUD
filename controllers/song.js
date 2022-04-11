@@ -26,7 +26,7 @@ function newSong (req, res) {
 }
 
 function show (req, res) {
-    Song.findOne({_id: req.params.id}, function(err, song){
+    Song.findOne({_id: req.params.id}).populate('reviews').exec(function(err,song){
         res.render('song/show', {song: song})
     })
 }

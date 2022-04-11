@@ -9,6 +9,7 @@ const methodOverride = require('method-override');
 const indexRoutes = require('./routes/index');
 const playlistRoutes = require('./routes/playlist');
 const songRoutes = require('./routes/song');
+const reviewRoutes = require('./routes/review')
 // load the env consts
 require('dotenv').config();
 
@@ -54,6 +55,7 @@ app.use(function (req, res, next) {
 app.use('/', indexRoutes);
 app.use('/playlist', playlistRoutes)
 app.use('/song', songRoutes)
+app.use('/', reviewRoutes)
 
 // invalid request, send 404 page
 app.use(function(req, res) {

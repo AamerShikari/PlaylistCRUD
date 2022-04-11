@@ -16,13 +16,14 @@
     </form>
 
     <% if (song.videoId) { %>
-        <iframe 
-            id="player" 
-            type="text/html" 
-            width="640" 
-            height="390" 
-            src="http://www.youtube.com/embed/<%= song.videoId %>"
-            frameborder="0"></iframe>
+    <iframe
+      id="player"
+      type="text/html"
+      width="640"
+      height="390"
+      src="http://www.youtube.com/embed/<%= song.videoId %>"
+      frameborder="0"
+    ></iframe>
     <% } %>
     <h2>Reviews</h2>
     <ul>
@@ -40,5 +41,10 @@
       <button type="submit">Add Review</button>
     </form>
 
+    <form>
+      <input type="button" value="Go back!" onclick="history.back()" />
+    </form>
+
+    
   </body>
 </html>

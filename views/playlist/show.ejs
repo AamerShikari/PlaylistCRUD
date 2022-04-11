@@ -11,9 +11,12 @@
     <h1><%= playlist.title %> </h1>
     <ul>
         <% playlist.songs.forEach(song =>{ %>
-            <li><%= song.name %> <br> &nbsp; &nbsp; By <%= song.artist %> 
+            <li><%= song.name %> <br> &nbsp; &nbsp; By <%= song.artist %>
             <form action="/playlist/<%= playlist._id %>/<%= song._id %>?_method=DELETE" method="POST"> 
                 <button type="submit">Remove</button>
+            </form>
+            <form action="/song/<%= song._id %>">
+                <button type="submit">Details</button>
             </form>
             </li>
         <% }) %> 

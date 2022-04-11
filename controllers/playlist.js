@@ -8,7 +8,8 @@ module.exports ={
     show,
     delete: deletePlaylist,
     addSong,
-    removeSong
+    removeSong,
+    like
 }
 
 function index (req, res) {
@@ -63,6 +64,15 @@ function removeSong (req, res) {
         console.log(playlist.songs)
         playlist.save(function(err, f){
             if (err){ console.log(err)}
+            res.redirect(`/playlist/${req.params.id}`)
+        })
+    })
+}
+
+function like (req, res) {
+    Playlist.findById(req.params.id, function(err, playlist){
+        playlist.likes = playlist.likes + 1
+        playlist.save(function(err){
             res.redirect(`/playlist/${req.params.id}`)
         })
     })

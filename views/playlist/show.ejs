@@ -36,6 +36,11 @@
         <button type="submit">Add Song</button>
     </form>
 
+    <h2>Likes: <%= playlist.likes %> </h2> 
+    <form action="/playlist/<%= playlist._id %>/liked" method="POST">
+        <button type="submit">Like</button>
+    </form>
+
     <h2>Reviews</h2>
     <ul>
         <% playlist.reviews.forEach(review => { %> 

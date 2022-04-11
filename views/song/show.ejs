@@ -1,31 +1,44 @@
 <%- include('../partials/header') %>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Show Song Page</title>
-</head>
-<body>
-    <h1><%= song.name %> </h1>
-    <h2> &nbsp; &nbsp; by <%= song.artist %> </h2>
+  </head>
+  <body>
+    <h1><%= song.name %></h1>
+    <h2>&nbsp; &nbsp; by <%= song.artist %></h2>
 
     <form action="/song/<%= song._id %>?_method=DELETE" method="POST">
-        <button type="submit">Delete Song</button>
+      <button type="submit">Delete Song</button>
     </form>
 
+    <% if (song.videoId) { %>
+        <iframe 
+            id="player" 
+            type="text/html" 
+            width="640" 
+            height="390" 
+            src="http://www.youtube.com/embed/<%= song.videoId %>"
+            frameborder="0"></iframe>
+    <% } %>
     <h2>Reviews</h2>
     <ul>
-        <% song.reviews.forEach(review => { %> 
-            <li><%= review.user %>: <%= review.content %> </li>
-        <% }) %> 
+      <% song.reviews.forEach(review => { %>
+      <li><%= review.user %>: <%= review.content %></li>
+      <% }) %>
     </ul>
 
     <h2>Add Review</h2>
-    <form action="/song/<%= song._id %>/<%= user.name %>/songReview" method="POST">
-        <input type="text" name="content"> <br>
-        <button type="submit">Add Review</button>
+    <form
+      action="/song/<%= song._id %>/<%= user.name %>/songReview"
+      method="POST"
+    >
+      <input type="text" name="content" /> <br />
+      <button type="submit">Add Review</button>
     </form>
-</body>
+
+  </body>
 </html>

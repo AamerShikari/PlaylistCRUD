@@ -11,10 +11,6 @@
     <h1><%= song.name %></h1>
     <h2>&nbsp; &nbsp; by <%= song.artist %></h2>
 
-    <form action="/song/<%= song._id %>?_method=DELETE" method="POST">
-      <button type="submit">Delete Song</button>
-    </form>
-
     <% if (song.videoId) { %>
     <iframe
       id="player"
@@ -25,12 +21,26 @@
       frameborder="0"
     ></iframe>
     <% } %>
+
+    <form action="/song/<%= song._id %>?_method=DELETE" method="POST">
+      <button type="submit">Delete Song</button>
+    </form>
+    <br />
+
+    <h2>Likes: <%= song.likes %> </h2> 
+    <form action="/song/<%= song._id %>/liked" method="POST">
+        <button type="submit">Like</button>
+    </form>
     <h2>Reviews</h2>
+    <% if (song.reviews.length !== 0) { %>
     <ul>
       <% song.reviews.forEach(review => { %>
       <li><%= review.user %>: <%= review.content %></li>
       <% }) %>
     </ul>
+    <% } else { %>
+    <h2>No one has reviewed yet!</h2>
+    <% } %>
 
     <h2>Add Review</h2>
     <form
@@ -44,7 +54,5 @@
     <form>
       <input type="button" value="Go back!" onclick="history.back()" />
     </form>
-
-    
   </body>
 </html>

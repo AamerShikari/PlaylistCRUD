@@ -6,7 +6,8 @@ module.exports = {
     add,
     new: newSong,
     show,
-    delete: deleteSong
+    delete: deleteSong,
+    like
 }
 
 function index (req, res) {
@@ -47,5 +48,14 @@ function show (req, res) {
 function deleteSong (req, res) {
     Song.findOneAndDelete({_id: req.params.id}, function (err){
         res.redirect('/song/allSongs')
+    })
+}
+
+function like (req, res) {
+    Song.findById(req.params.id, function(err, song){
+        song.likes = song.likes + 1
+        song.save(function(err){
+            res.redirect(`/song/${req.params.id}`)
+        })
     })
 }

@@ -11,5 +11,7 @@ router.post('/create', songController.new)
 router.get('/:id', songController.show)
 //DELETE /song/:id
 router.delete('/:id', songController.delete)
+//POST /song/:id/liked
+router.post('/:id/liked', songController.like)
 
 module.exports = router

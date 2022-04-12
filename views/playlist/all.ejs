@@ -8,16 +8,25 @@
     <title>All Playlists</title>
   </head>
   <body>
-    <h1>All Playlists Page</h1>
-
+    <div class="d-flex justify-content-center">
+      <h1>Playlists Page</h1>
+    </div>
+    <div class="d-flex justify-content-left">
     <ul>
       <% playlists.forEach(playlist => { %>
-        <li>
-            <%= playlist.title %>
-            <button><a href="/playlist/<%= playlist._id %> ">Details</a></button>
-        </li>
+      <li>
+        <div class="d-flex justify-content-left">
+          <p><strong><%= playlist.title %></strong></p>
+          <button
+            class="btn btn-dark"
+            onclick="location.href=`/playlist/<%= playlist._id %>`"
+          >
+            Details
+          </button>
+        </div>
+      </li>
       <% }) %>
     </ul>
+  </div>
   </body>
 </html>
-

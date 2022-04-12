@@ -1,23 +1,51 @@
 <%- include('../partials/header') %>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add Song</title>
-</head>
-<body>
-    <h1> Add New Song Page</h1>
+  </head>
+  <body>
+    <div class="d-flex justify-content-center">
+        <h1>Add New Song Page</h1>
+    </div>
+
     <form action="/song/create" method="POST">
-        <label>Song Name: 
-            <input type="text" name="name">
-        </label> <br>
-        <label>Song Artist: 
-            <input type="text" name="artist">
-        </label>
-        <button type="submit">Create New Song</button>
+      <div class="form-group">
+        <label>Song Name:</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter Name Here"
+          name="name"
+        />
+        <label>Song Artist:</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter Artist Here"
+          name="artist"
+        />
+        <small class="form-text text-muted"
+          >Show Us Whatcha Got! Any Song, Any Artist, AnyTime!</small
+        >
+      </div>
+      <button type="submit" class="btn btn-dark">Submit</button>
     </form>
 
-</body>
+    <!-- <form action="/song/create" method="POST">
+      <label
+        >Song Name:
+        <input type="text" name="name" />
+      </label>
+      <br />
+      <label
+        >Song Artist:
+        <input type="text" name="artist" />
+      </label>
+      <button type="submit">Create New Song</button>
+    </form> -->
+  </body>
 </html>

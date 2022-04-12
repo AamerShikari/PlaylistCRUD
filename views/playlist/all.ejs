@@ -16,7 +16,7 @@
       <% playlists.forEach(playlist => { %>
       <li>
         <div class="d-flex justify-content-left">
-          <p><strong><%= playlist.title %></strong></p>
+          <h4><strong><%= playlist.title %></strong></h4>
           <button
             class="btn btn-dark"
             onclick="location.href=`/playlist/<%= playlist._id %>`"

@@ -1,19 +1,35 @@
 <%- include('../partials/header') %>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>All Songs</title>
-</head>
-<body>
-    <h1>All Songs</h1>
-    <ul> 
-        <% songs.forEach(song => { %>
-            <li> <%= song.name %>  <br> &nbsp; &nbsp; by <%= song.artist %> 
-            <button><a href="/song/<%= song._id %>">Details</a></button></li>
-        <% }) %> 
+  </head>
+  <body>
+    <div class="d-flex justify-content-center">
+        <h1>All Songs</h1>
+    </div>
+    <ul>
+      <% songs.forEach(song => { %>
+      <li>
+        <div class="d-flex justify-content-left">
+          <h4>
+            <strong
+              ><%= song.name %> <br />
+              &nbsp; &nbsp; by <%= song.artist %>
+            </strong>
+        </h4>
+          <button
+            class="btn btn-dark"
+            onclick="location.href=`/song/<%= song._id %>`"
+          >
+            Details
+          </button>
+        </div>
+      </li>
+      <% }) %>
     </ul>
-</body>
+  </body>
 </html>

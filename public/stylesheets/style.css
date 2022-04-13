@@ -1,3 +1,17 @@
+.navbar-expand-lg {
+  background-color: black;
+}
+
+
+#navbarItem {
+  color: white;
+  font-weight: 700;
+}
+
+#navbarItem:hover {
+  color: #1ED760;
+}
+
 .brand-logo {
   margin-left: 15px;
 }
@@ -30,4 +44,24 @@
 .login img {
   height: 30px;
   align-items: flex-end;
+}
+
+.page-footer {
+  background-color: #1ED760;
+}
+
+#featuresIntro {
+  margin-right: 300px
+}
+
+#table-items:hover{
+  color:#1ED760;
+}
+
+#song-button {
+  color: #1ED760;
+}
+
+#song-button:hover{
+  color: white;
 }

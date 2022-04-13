@@ -9,27 +9,41 @@
   </head>
   <body>
     <div class="d-flex justify-content-center">
-        <h1>All Songs</h1>
+      <h1>All Songs</h1>
     </div>
-    <ul>
-      <% songs.forEach(song => { %>
-      <li>
-        <div class="d-flex justify-content-left">
-          <h4>
-            <strong
-              ><%= song.name %> <br />
-              &nbsp; &nbsp; by <%= song.artist %>
-            </strong>
-        </h4>
-          <button
-            class="btn btn-dark"
-            onclick="location.href=`/song/<%= song._id %>`"
-          >
-            Details
-          </button>
-        </div>
-      </li>
-      <% }) %>
-    </ul>
+
+    <div class="d-flex justify-content-center">
+      <% if (songs) { %>
+        <% let rating = 1 %>
+        <table class="table table-dark">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Title</th>
+              <th scope="col">Artist</th>
+              <th scope="col">View</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% songs.forEach(song => { %>
+              <tr id="table-items">
+                <th scope="row"><%= rating %> <% rating++ %> </th>
+                <td><%= song.name %></td>
+                <td><%= song.artist %></td>
+                <td>
+                  <button
+                    class="btn"
+                    onclick="location.href=`/song/<%= song._id %>`"
+                    id="song-button"
+                  >
+                    Details
+                  </button>
+                </td>  
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      <% } %> 
+    </div>
   </body>
 </html>

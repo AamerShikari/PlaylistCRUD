@@ -5,55 +5,92 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script defer src="/stylesheets/song/show.js"></script>
     <title>Show Song Page</title>
   </head>
   <body>
-    <h1><%= song.name %></h1>
-    <h2>&nbsp; &nbsp; by <%= song.artist %></h2>
+    <div class="d-flex flex-column">
+      <div class="align-self-center">
+        <h1><%= song.name %></h1>
+      </div>
+      <div class="align-self-center">
+        <h2>by <%= song.artist %></h2>
+      </div>
 
-    <% if (song.videoId) { %>
-    <iframe
-      id="player"
-      type="text/html"
-      width="640"
-      height="390"
-      src="http://www.youtube.com/embed/<%= song.videoId %>"
-      frameborder="0"
-    ></iframe>
-    <% } %>
+      <div class="align-self-center" id="video">
+        <% if (song.videoId) { %>
+        <iframe
+          id="player"
+          type="text/html"
+          width="640"
+          height="390"
+          src="http://www.youtube.com/embed/<%= song.videoId %>"
+          frameborder="0"
+        ></iframe>
+        <% } %>
+      </div>
 
-    <form action="/song/<%= song._id %>?_method=DELETE" method="POST">
-      <button type="submit">Delete Song</button>
-    </form>
-    <br />
+      <div id="deleteButton">
+        <form action="/song/<%= song._id %>?_method=DELETE" method="POST">
+          <button class="btn btn-dark" type="submit">Delete Song</button>
+        </form>
+        <br />
+      </div>
 
-    <h2>Likes: <%= song.likes %> </h2> 
-    <form action="/song/<%= song._id %>/liked" method="POST">
-        <button type="submit">Like</button>
-    </form>
-    
-    <h2>Reviews</h2>
-    <% if (song.reviews.length !== 0) { %>
-    <ul>
-      <% song.reviews.forEach(review => { %>
-      <li><%= review.user %>: <%= review.content %></li>
-      <% }) %>
-    </ul>
-    <% } else { %>
-    <h2>No one has reviewed yet!</h2>
-    <% } %>
+      <div class="align-self-center">
+        <div class="d-flex flex-row">
+          <div id="#numLikes">
+            <h2>Likes: <%= song.likes %></h2>
+          </div>
+          <div id="like">
+            <form action="/song/<%= song._id %>/liked" method="POST">
+              <button class="btn btn-dark" type="submit">Like</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex align-self-center" id="video">
+        <h2>Add Review</h2>
+      </div>
 
-    <h2>Add Review</h2>
-    <form
-      action="/song/<%= song._id %>/<%= user.name %>/songReview"
-      method="POST"
-    >
-      <input type="text" name="content" /> <br />
-      <button type="submit">Add Review</button>
-    </form>
+      <div class="d-flex align-self-center" id="video">
+        <form
+          action="/song/<%= song._id %>/<%= user.name %>/songReview"
+          method="POST"
+        >
+          <input type="text" name="content" />
+          <button class="btn btn-dark" type="submit">Add Review</button>
+        </form>
+      </div>
 
-    <form>
-      <input type="button" value="Go back!" onclick="history.back()" />
-    </form>
+      <div class="align-self-center">
+        <h2>Reviews</h2>
+        <% if (song.reviews.length !== 0) { %>
+        <table class="table table-dark">
+          <thead>
+            <tr>
+              <th scope="col">User</th>
+              <th scope="col">Comment</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% song.reviews.forEach(review => { %>
+            <tr>
+              <td><%= review.user %></td>
+              <td><%= review.content %></td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+
+        <% } else { %>
+        <h2>No one has reviewed yet!</h2>
+        <% } %>
+      </div>
+      
+      <form>
+        <input class="btn btn-dark" type="button" value="Go back!" onclick="history.back()" />
+      </form>
+    </div>
   </body>
 </html>

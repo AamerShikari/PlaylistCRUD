@@ -11,22 +11,36 @@
     <div class="d-flex justify-content-center">
       <h1>Playlists Page</h1>
     </div>
-    <div class="d-flex justify-content-left">
-    <ul>
-      <% playlists.forEach(playlist => { %>
-      <li>
-        <div class="d-flex justify-content-left">
-          <h4><strong><%= playlist.title %></strong></h4>
-          <button
-            class="btn btn-dark"
-            onclick="location.href=`/playlist/<%= playlist._id %>`"
-          >
-            Details
-          </button>
-        </div>
-      </li>
-      <% }) %>
-    </ul>
+    <div class="d-flex justify-content-center">
+      <% if (playlists) { %>
+        <% let rating = 1 %>
+        <table class="table table-dark">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Title</th>
+              <th scope="col">View</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% playlists.forEach(playlist => { %>
+              <tr id="table-items">
+                <th scope="row"><%= rating %> <% rating++ %> </th>
+                <td><%= playlist.title %></td>
+                <td>
+                  <button
+                    class="btn"
+                    onclick="location.href=`/playlist/<%= playlist._id %>`"
+                    id="song-button"
+                  >
+                    Details
+                  </button>
+                </td>  
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      <% } %> 
   </div>
   </body>
 </html>

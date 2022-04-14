@@ -3,11 +3,14 @@ html, body {
   flex-direction: column;
   margin: 0;
   height: 100%;
+  width: 100%;
   
 }
 
+
 .navbar-expand-lg {
   background-color: black;
+  min-width: 100%;
 }
 
 
@@ -89,4 +92,15 @@ html, body {
 #allSongs {
   background-image: url("/images/plantBorder.jpeg");
   background-size: contain;
+}
+
+.display-1 {
+  text-align:center; 
+  font-family: Helvetica, Arial, sans-serif; 
+  font-weight: 900;
+}
+
+#logout {
+  display: flex!important;
+  
 }

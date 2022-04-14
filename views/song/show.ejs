@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Show Song Page</title>
   </head>
-  <body>
+  <body id="showSong">
     <div class="d-flex flex-column">
       <div class="align-self-center">
         <h1><%= song.name %></h1>
@@ -39,7 +39,7 @@
           </div>
 
           <div id="#numLikes">
-            <h2>Likes: <%= song.likes %></h2>
+            <h2 style="color:#e5383b;">Likes: <%= song.likes %></h2>
           </div>
           <div id="like" style="margin-left: 170px">
             <form action="/song/<%= song._id %>/liked" method="POST">
@@ -49,7 +49,6 @@
         </div>
       </div>
       <div class="d-flex align-self-center" id="video">
-        <h2>Add Review</h2>
       </div>
 
       <div class="d-flex align-self-center" id="video">

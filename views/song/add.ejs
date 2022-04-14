@@ -7,33 +7,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add Song</title>
   </head>
-  <body>
+  <body id="addSong">
     <div class="d-flex justify-content-center">
-      <h1>Add New Song Page</h1>
+      <h1 style="color:#e5383b;">Add New Song Page</h1>
     </div>
 
     <div class="d-flex justify-content-center">
       <form action="/song/create" method="POST">
         <div class="form-group">
-          <label>Song Name:</label>
+          <label style="color: #e5383b;">Song Name:</label>
           <input
             type="text"
             class="form-control"
             placeholder="Enter Name Here"
             name="name"
           />
-          <label>Song Artist:</label>
+          <label style="color: #e5383b;">Song Artist:</label>
           <input
             type="text"
             class="form-control"
             placeholder="Enter Artist Here"
             name="artist"
           />
-          <small class="form-text text-muted"
+          <small style="color: #e5383b;"
             >Show Us Whatcha Got! Any Song, Any Artist, AnyTime!</small
           >
         </div>
-        <button type="submit" class="btn btn-dark">Submit</button>
+        <button type="submit" class="btn btn-dark formBtn">Submit</button>
       </form>
     </div>
   </body>

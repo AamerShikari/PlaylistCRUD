@@ -7,6 +7,7 @@ module.exports = {
     addPlaylist
 }
 
+//Add a review to a particular song and then redirect to that song's page
 function addSong (req, res){
     req.body.user = req.params.userName
     const review = new Review(req.body)
@@ -20,6 +21,7 @@ function addSong (req, res){
     })
 }
 
+//Add a review to a particular playlist and then redirect to that playlist's page
 function addPlaylist (req, res){
     req.body.user = req.params.userName
     const review = new Review(req.body)

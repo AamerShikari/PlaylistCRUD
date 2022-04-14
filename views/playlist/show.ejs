@@ -7,51 +7,114 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Show Playlist</title>
 </head>
-<body>
-    <h1><%= playlist.title %> </h1>
-    <ul>
-        <% playlist.songs.forEach(song =>{ %>
-            <li><%= song.name %> <br> &nbsp; &nbsp; By <%= song.artist %>
-            <form action="/playlist/<%= playlist._id %>/<%= song._id %>?_method=DELETE" method="POST"> 
-                <button type="submit">Remove</button>
-            </form>
-            <form action="/song/<%= song._id %>">
-                <button type="submit">Details</button>
-            </form>
-            </li>
-        <% }) %> 
-    </ul>
+<body id="showPlaylist">
+    <div class="d-flex justify-content-center"> 
+        <h1><%= playlist.title %> </h1>
+    </div>
 
-    <form action="/playlist/<%= playlist._id %>?_method=DELETE" method="POST">
-        <button type="submit">Delete Playlist!</button>
-    </form>
+    <div class="d-flex justify-content-center">
+    </div>
+    <div class="d-flex justify-content-center">
+        <form action="/playlist/<%= playlist._id %>/addSong" method="POST">
+            <select name="songId">
+                <% songs.forEach(song =>{ %>
+                    <option value =<%= song._id %>><%= song.name %> by <%= song.artist %> </option> 
+                <% }) %> 
+            </select>
+            <button class="btn btn-dark" type="submit">Add Song</button>
+        </form>
+    </div>
 
-    <h2> Add Song </h2>
-    <form action="/playlist/<%= playlist._id %>/addSong" method="POST">
-        <select name="songId">
-            <% songs.forEach(song =>{ %>
-                <option value =<%= song._id %>><%= song.name %> by <%= song.artist %> </option> 
-            <% }) %> 
-        </select>
-        <button type="submit">Add Song</button>
-    </form>
 
-    <h2>Likes: <%= playlist.likes %> </h2> 
-    <form action="/playlist/<%= playlist._id %>/liked" method="POST">
-        <button type="submit">Like</button>
-    </form>
+    <div class="d-flex justify-content-center">
+    <% let rating = 1 %>
+    <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Artist</th>
+            <th scope="col">Delete</th>
+            <th scope="col">View</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% playlist.songs.forEach(song => { %>
+            <tr id="table-items">
+              <th scope="row"><%= rating %> <% rating++ %> </th>
+              <td><%= song.name %></td>
+              <td><%= song.artist %></td>
+              <td>
+                <form action="/playlist/<%= playlist._id %>/<%= song._id %>?_method=DELETE" method="POST"> 
+                    <button class="btn btn-dark" type="submit" id="song-button">Remove</button>
+                </form>
+              </td>
+              <td>
+                <button
+                  class="btn"
+                  onclick="location.href=`/song/<%= song._id %>`"
+                  id="song-button"
+                >
+                  Details
+                </button>
+              </td>  
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="d-flex justify-content-center">
+        <h2 style="color:#e5383b;">Likes: <%= playlist.likes %> </h2> 
+    </div>
 
-    <h2>Reviews</h2>
-    <ul>
-        <% playlist.reviews.forEach(review => { %> 
-            <li><%= review.user %>: <%= review.content %> </li>
-        <% }) %> 
-    </ul>
+    <div class="d-flex justify-content-end">
+        <form action="/playlist/<%= playlist._id %>/liked" method="POST">
+            <button class="btn btn-dark" type="submit">Like</button>
+        </form>
+    </div>    
 
-    <h2>Add Review</h2>
-    <form action="/playlist/<%= playlist._id %>/<%= user.name %>/playlistReview" method="POST">
-        <input type="text" name="content"> <br>
-        <button type="submit">Add Review</button>
-    </form>
+    <div class="d-flex justify-content-center">
+        <form action="/playlist/<%= playlist._id %>?_method=DELETE" method="POST">
+            <button class="btn btn-dark" type="submit">Delete Playlist!</button>
+        </form>
+    </div>
+
+    <div class="align-self-center">
+        <h2>Add Review</h2>
+        <form action="/playlist/<%= playlist._id %>/<%= user.name %>/playlistReview" method="POST">
+            <input type="text" name="content"> <br>
+            <button  class="btn btn-dark" type="submit">Add Review</button>
+        </form>
+        <h2>Reviews</h2>
+        <% if (playlist.reviews.length !== 0) { %>
+        <table class="table table-dark">
+          <thead>
+            <tr>
+              <th scope="col">User</th>
+              <th scope="col">Comment</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% playlist.reviews.forEach(review => { %>
+            <tr>
+              <td><%= review.user %></td>
+              <td><%= review.content %></td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+
+        <% } else { %>
+        <h2>No one has reviewed yet!</h2>
+        <% } %>
+
+        
+    </div>
+
+
+    
 </body>
 </html>
+
+<%- include('../partials/footer') %>

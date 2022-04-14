@@ -1,11 +1,21 @@
+html, body {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  
+}
+
+
 .navbar-expand-lg {
   background-color: black;
+  min-width: 100%;
 }
 
 
 #navbarItem {
-  color: white;
-  font-weight: 700;
+  color: #1ED760;
 }
 
 #navbarItem:hover {
@@ -47,11 +57,12 @@
 }
 
 .page-footer {
-  background-color: #1ED760;
+  background-color: black;
+  color: white;
 }
 
 #featuresIntro {
-  margin-right: 300px
+  margin-right: 200px
 }
 
 #table-items:hover{
@@ -64,4 +75,113 @@
 
 #song-button:hover{
   color: white;
+}
+
+.footer {
+ margin-top: auto;
+} 
+
+#indexPage {
+  background-color: #1976d2;
+  background-position: -400px 75px;
+  background-repeat: no-repeat;
+  background-image: url("https://www-growth.scdn.co/static/home/bursts.svg");
+}
+
+#allSongs {
+  background-image: url("/images/greenBoxes.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: #9ef01a;
+}
+
+#allPlaylists{
+  background-image: url("/images/plantBorder.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: #9ef01a;
+}
+
+#addPlaylist{
+  background-image: url("/images/speakerJam.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: #2196f3;
+}
+
+#addSong{
+  background-image: url("/images/blueNotes.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: #2196f3;
+  background-position: 0px -11px;
+}
+
+#showSong{
+  background-image: url("/images/chartedNotes.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: #ffcb69;
+}
+
+#showPlaylist{
+  background-image: url("/images/colorSpam.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: #ffcb69;
+}
+
+.display-1 {
+  text-align:center; 
+  font-family: Helvetica, Arial, sans-serif; 
+  font-weight: 900;
+}
+
+#logout {
+  display: flex!important;
+  
+}
+
+#logo {
+  display:flex!important;
+  align-items: center;
+}
+
+.nav-item {
+  display: flex;
+  font-weight: 700;
+  border-style: solid;
+  border-color: #1ED760;
+  margin: 15px 5px;
+  text-align: center;
+  align-items: center;
+}
+
+.nav-item:hover{
+
+  border-color: whitesmoke;
+  font-size: smaller;
+}
+
+#navbarItem:hover{
+  color: whitesmoke;
+}
+
+@media (max-width: 991px){
+  .nav-item {
+    margin: 2px;
+  }
+}
+
+.formBtn:hover{
+  color:#e5383b;
+}
+
+.footerLink {
+  text-decoration: none;
+  color: whitesmoke
+}
+
+.footerLink:hover {
+  color: #1ED760;
 }

@@ -9,30 +9,34 @@
   </head>
   <body>
     <div class="d-flex justify-content-center">
-        <h1>Add New Song Page</h1>
+      <h1>Add New Song Page</h1>
     </div>
 
-    <form action="/song/create" method="POST">
-      <div class="form-group">
-        <label>Song Name:</label>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Enter Name Here"
-          name="name"
-        />
-        <label>Song Artist:</label>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Enter Artist Here"
-          name="artist"
-        />
-        <small class="form-text text-muted"
-          >Show Us Whatcha Got! Any Song, Any Artist, AnyTime!</small
-        >
-      </div>
-      <button type="submit" class="btn btn-dark">Submit</button>
-    </form>
+    <div class="d-flex justify-content-center">
+      <form action="/song/create" method="POST">
+        <div class="form-group">
+          <label>Song Name:</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter Name Here"
+            name="name"
+          />
+          <label>Song Artist:</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter Artist Here"
+            name="artist"
+          />
+          <small class="form-text text-muted"
+            >Show Us Whatcha Got! Any Song, Any Artist, AnyTime!</small
+          >
+        </div>
+        <button type="submit" class="btn btn-dark">Submit</button>
+      </form>
+    </div>
   </body>
 </html>
+
+<%- include('../partials/footer') %>

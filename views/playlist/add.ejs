@@ -9,23 +9,27 @@
   </head>
   <body>
     <div class="d-flex justify-content-center">
-        <h1>Add New Playlist Page</h1>
+      <h1>Add New Playlist Page</h1>
     </div>
 
-    <form action="/playlist/create" method="POST">
-      <div class="form-group">
-        <label>Playlist Name:</label>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Enter Name Here"
-          name="title"
-        />
-        <small class="form-text text-muted"
-          >The First Step to Joining the Playlist Community!</small
-        >
-      </div>
-      <button type="submit" class="btn btn-dark">Submit</button>
-    </form>
+    <div class="d-flex justify-content-center">
+      <form action="/playlist/create" method="POST">
+        <div class="form-group">
+          <label>Playlist Name:</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter Name Here"
+            name="title"
+          />
+          <small class="form-text text-muted"
+            >The First Step to Joining the Playlist Community!</small
+          >
+        </div>
+        <button type="submit" class="btn btn-dark">Submit</button>
+      </form>
+    </div>
   </body>
 </html>
+
+<%- include('../partials/footer') %>

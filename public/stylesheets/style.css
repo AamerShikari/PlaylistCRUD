@@ -1,3 +1,11 @@
+html, body {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  height: 100%;
+  
+}
+
 .navbar-expand-lg {
   background-color: black;
 }
@@ -47,11 +55,12 @@
 }
 
 .page-footer {
-  background-color: #1ED760;
+  background-color: black;
+  color: white;
 }
 
 #featuresIntro {
-  margin-right: 300px
+  margin-right: 200px
 }
 
 #table-items:hover{
@@ -64,4 +73,20 @@
 
 #song-button:hover{
   color: white;
+}
+
+.footer {
+ margin-top: auto;
+} 
+
+#indexPage {
+  background-color: rgb(41, 65, 171);
+  background-position: -400px 75px;
+  background-repeat: no-repeat;
+  background-image: url("https://www-growth.scdn.co/static/home/bursts.svg");
+}
+
+#allSongs {
+  background-image: url("/images/plantBorder.jpeg");
+  background-size: contain;
 }

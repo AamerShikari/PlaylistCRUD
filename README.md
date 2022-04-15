@@ -1,4 +1,4 @@
 <h1> PlayList CRUD App! </h1>
 
 <h3> Data Model </h3>
-
+![ERD](ReadMePics/ERDGraph.png?raw=true)

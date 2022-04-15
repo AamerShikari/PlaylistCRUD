@@ -3,6 +3,17 @@
 <p> This application acts as an open source music share where anyone can modify songs, playlists,
   and reviews to the forum. The aesthetic draws most of its inspiration from Spotify and Youtube! </p>
 
+<h2> Here's a Sneak Peak </h2>
+<h3> Home Page </h3>
+<img src="ReadMePics/HomePage.png"
+     alt="Home Page" />
+<h3> All Playlists </h3>
+<img src="ReadMePics/AllPlaylists.png"
+     alt="All Playlists" />
+<h3> All Songs </h3>
+ <img src="ReadMePics/AllSongs.png"
+     alt="All Songs" />
+
 <p> Excited to check it out? <a href="https://play-list-crud.herokuapp.com/"> Click Here! </a> <p> 
 
 <h2> Data Model </h2>

@@ -44,3 +44,9 @@ Deployed On Heroku
 Here's The Link!
 <a href="https://play-list-crud.herokuapp.com/"> PlayList CRUD App </a>
  
+<h2> Stretch Goals </h2>
+<ul>
+  <li>Make Playlists Associated to a User</li>
+  <li>Make Reviews Deleteable</li>
+  <li>Make Comments, playlists, and songs only deleteable by the user who created them</li>
+</ul
